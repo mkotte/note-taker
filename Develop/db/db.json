@@ -1,6 +1,9 @@
 [
     {
-        "title":"Test Title",
-        "text":"Test text"
+        "title":"DB Homework",
+        "text":"Due on Friday"
+    },{
+        "title":"SQL Quiz",
+        "text":"Saturday at noon"
     }
 ]
