@@ -1,0 +1,29 @@
+{
+  "name": "note-taker",
+  "version": "1.0.0",
+  "description": "express.js application hosted by heroku",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mkotte/note-taker.git"
+  },
+  "keywords": [
+    "note",
+    "taker",
+    "kotte"
+  ],
+  "author": "C. Michael Kotte",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mkotte/note-taker/issues"
+  },
+  "homepage": "https://github.com/mkotte/note-taker#readme"
+}
