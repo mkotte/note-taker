@@ -2,8 +2,6 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-// const dbInfo = require('./Develop/db/db.json')
-// const dbInfo = [];
 
 // Express Configurations
 const app = express();
@@ -12,14 +10,15 @@ const PORT = process.env.PORT || 3000;
 //
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static('public'));
 
 //
-app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, 'Develop/public/notes.html')));
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'Develop/public/index.html')));
+app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, 'public/notes.html')));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public/index.html')));
 
 //
 app.get('/api/notes', (req, res) => {
-    fs.readFile('./Develop/db/db.json', 'utf8', (err, data) => {
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
         if(err){ res.status(400).json(err) }; 
 
         res.status(200).json(JSON.parse(data));
@@ -28,18 +27,22 @@ app.get('/api/notes', (req, res) => {
 
 //
 app.post('/api/notes', (req, res) => {
-    const newInfo = req.body;
-    fs.readFile('Develop/db/db.json', 'utf8', (err, data) => {
+    const newNote = {
+        title: req.body.title,
+        text: req.body.text,
+      };
+    fs.readFile('db/db.json', 'utf8', (err, data) => {
         if(err){ res.status(400).json(err) };
-        let dbInfo = JSON.parse(data);
-        dbInfo.push(newInfo)
+        const dbInfo = JSON.parse(data);
+        dbInfo.push(newNote)
         
-        fs.writeFile('Develop/db/db.json', JSON.stringify(dbInfo), 'utf8', (err) =>{
+        fs.writeFile('db/db.json', JSON.stringify(dbInfo), 'utf8', (err) => {
         if(err){ res.status(400).json(err) };
+        res.json(dbInfo);
         });
     });
 
-    res.json('Post worked!');
+    // res.json('Post worked!');
 })
 
 
