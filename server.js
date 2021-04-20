@@ -25,7 +25,7 @@ app.get('/api/notes', (req, res) => {
     });     
 });
 
-// Default Route - has to be under all other app.get's
+// Default Route -> has to be under all other app.get's
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'public/index.html')));
 
 // Post Route to read then rewrite db.json, adding the new note
