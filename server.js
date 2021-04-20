@@ -2,6 +2,7 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const db = require('db/db.json')
 
 // Express Configurations
 const app = express();
@@ -18,7 +19,7 @@ app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public/index.html'
 
 //
 app.get('/api/notes', (req, res) => {
-    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+    fs.readFile(db, 'utf8', (err, data) => {
         if(err){ res.status(400).json(err) }; 
 
         res.status(200).json(JSON.parse(data));
@@ -28,7 +29,7 @@ app.get('/api/notes', (req, res) => {
 //
 app.post('/api/notes', (req, res) => {
     
-    fs.readFile('db/db.json', 'utf8', (err, data) => {
+    fs.readFile(db, 'utf8', (err, data) => {
         if(err){ res.status(400).json(err) };
         const dbInfo = JSON.parse(data);
         const newNote = {
@@ -38,15 +39,19 @@ app.post('/api/notes', (req, res) => {
         };
         dbInfo.push(newNote)
         
-        fs.writeFile('db/db.json', JSON.stringify(dbInfo), 'utf8', (err) => {
+        fs.writeFile('db', JSON.stringify(dbInfo), 'utf8', (err) => {
         if(err){ res.status(400).json(err) };
         return true;
         });
     });
 
-    // res.json('Post worked!');
+    res.redirect('/')
 })
 
+app.delete('/api/notes/:id', (req, res) => {
+    const noteIndex = db.find( ({id})) => id === JSON.parse(req.params.body);
+    console.log(noteIndex)
+})
 
 // listener 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
