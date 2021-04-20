@@ -15,7 +15,6 @@ app.use(express.static(__dirname + '/public'));
 // Route to /notes.html
 app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, 'public/notes.html')));
 
-
 // API get request to obtain notes from db.json
 app.get('/api/notes', (req, res) => {
     fs.readFile('./db/db.json', 'utf8', (err, data) => {
