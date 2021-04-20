@@ -56,7 +56,7 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 
 
 ## Links
-- [Deployed App (Heroku)](https://shielded-lake-52020.herokuapp.com/notes)
+- [Deployed App (Heroku)](https://shielded-lake-52020.herokuapp.com/)
 - [Github Repository](https://github.com/mkotte/note-taker)
 
 
