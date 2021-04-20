@@ -44,8 +44,8 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 * Followed best practices
 
 ## Screenshots
-![screenshot](\assets\note_taker_index.png)
-![screenshot](\assets\note_taker_notes.png)
+![screenshot](./assets/note_taker_index.png)
+![screenshot](./assets/note_taker_notes.png)
 
 ## Technology Used
 * Express
