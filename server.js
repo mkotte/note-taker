@@ -49,7 +49,7 @@ app.post('/api/notes', (req, res) => {
 })
 
 app.delete('/api/notes/:id', (req, res) => {
-    const noteIndex = db.find( ({id})) => id === JSON.parse(req.params.body);
+    const noteIndex = db.find(({id}) => id === JSON.parse(req.params.body);
     console.log(noteIndex)
 })
 
